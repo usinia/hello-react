@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+// import classNames from "classnames";
+import classNames from "classnames/bind";
+import styles from "./App.css";
+
+const cx = classNames.bind(styles); /* bind로 styles 생략 가능 */
+
+console.log(styles);
 
 function App() {
+  const isBlue = true;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div
+      // className={[styles.box, styles.blue].join(" ")}
+      // className={classNames(styles.box, styles.blue)}
+      // className={classNames(cx("box", "blue"))}
+      className={classNames(cx("box", { blue: isBlue }))} /* 다양한 형식 지원 */
+    />
   );
 }
 

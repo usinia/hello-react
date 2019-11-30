@@ -1,4 +1,4 @@
-"use strict";
+
 
 const fs = require("fs");
 const isWsl = require("is-wsl");
@@ -90,7 +90,11 @@ module.exports = function(webpackEnv) {
       },
       {
         loader: require.resolve("css-loader"),
-        options: cssOptions
+        options: {
+          ...cssOptions,
+          modules: true,
+          localIdentName: "[path][name]__[local]--[hash:base64:5]"
+        }
       },
       {
         // Options for PostCSS as we reference these options twice
