@@ -1,29 +1,18 @@
 import React, { Component } from "react";
-import LifeCycleSample from "./LifeCycleSample";
-
-// 랜덤 색상을 생성합니다.
-function getRandomColor() {
-  return (
-    "#" + Math.floor(Math.random() * 16777215).toString(16)
-  ); /* 16777215는 hex코드로 ffffff, #000000~#ffffff */
-}
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
-  state = {
-    color: "#000000"
-  };
-
-  handleClick = () => {
-    this.setState({
-      color: getRandomColor()
-    });
-  };
-
   render() {
     return (
-      <div>
-        <button onClick={this.handleClick}>랜덤 색상</button>
-        <LifeCycleSample color={this.state.color} />
+      <div className="App">
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Welcome to React</h2>
+        </div>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
       </div>
     );
   }
