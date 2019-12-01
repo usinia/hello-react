@@ -1,5 +1,3 @@
-
-
 const fs = require("fs");
 const isWsl = require("is-wsl");
 const path = require("path");
@@ -119,6 +117,14 @@ module.exports = function(webpackEnv) {
             postcssNormalize()
           ],
           sourceMap: isEnvProduction && shouldUseSourceMap
+        }
+      },
+      {
+        loader: require.resolve("sass-loader"),
+        options: {
+          sassOptions: {
+            includePaths: [paths.styles]
+          }
         }
       }
     ].filter(Boolean);
@@ -462,6 +468,22 @@ module.exports = function(webpackEnv) {
                 modules: true,
                 getLocalIdent: getCSSModuleLocalIdent
               })
+            },
+            {
+              test: /\.s[ac]ss$/i,
+              use: [
+                "style-loader",
+                "css-loader",
+                {
+                  loader: "sass-loader",
+                  options: {
+                    sassOptions: {
+                      indentWidth: 4,
+                      includePaths: [paths.styles]
+                    }
+                  }
+                }
+              ]
             },
             // Opt-in support for SASS (using .scss or .sass extensions).
             // By default we support SASS Modules with the

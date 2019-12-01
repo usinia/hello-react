@@ -1,0 +1,50 @@
+// @import './styles/utils.scss';
+@import 'utils';
+
+/*
+.box:hover {
+    background: red;
+}
+
+.box:active {
+    background: yellow;
+}
+*/
+
+/*
+// 전역으로 사용하기 위해 ./styles/utils.scss 로 이동
+$size: 100px;
+
+@mixin place-at-center() {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+*/
+
+.box {
+    /* &: 선택자 참조 기능 */
+    &:hover {
+        background: red;
+    }
+    &:active {
+        background: yellow;
+    }
+
+    display: inline-block;
+    width: $size;
+    height: $size;
+    border: 1px solid black;
+    position: fixed;
+    @include place-at-center();
+
+    &.blue {
+        background: blue;
+    }
+
+    .box-inside {
+        background: black;
+        width: 50px;
+        height: 50px;
+    }
+}
