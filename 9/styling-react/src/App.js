@@ -1,10 +1,14 @@
 import React from "react";
-import Button from "./component/Button";
+import StyledButton from "./component/Button/StyledButton";
 
 function App() {
   return (
     <div>
-      <Button>버튼</Button>
+      <StyledButton
+        big // big={true} /* 동일 */
+      >
+        버튼
+      </StyledButton>
     </div>
   );
 }
