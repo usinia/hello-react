@@ -1,4 +1,8 @@
 import React from "react";
+import styles from "./TodoInput.scss";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles);
 
 const TodoInput = ({ value, onChange, onInsert }) => {
   const handleKeyPress = e => {
@@ -7,9 +11,9 @@ const TodoInput = ({ value, onChange, onInsert }) => {
     }
   };
   return (
-    <div className={"todo-input"}>
+    <div className={cx("todo-input")}>
       <input onChange={onChange} value={value} onKeyPress={handleKeyPress} />
-      <div className={"add-button"} onClick={onInsert}>
+      <div className={cx("add-button")} onClick={onInsert}>
         추가
       </div>
     </div>

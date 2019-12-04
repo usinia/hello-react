@@ -38,14 +38,21 @@ export default handleActions(
       );
     },
     [TOGGLE]: (state, action) => {
-      const { payload: index } = action;
+      const { payload: id } = action;
       /* const { index } = action.payload; // 와 동일하지만
        여기서 payload가 어떤 값을 의미하는지 쉽게 이해할 수 있다.
-    */
+      */
+
+      // TodoItem이 가지고 있는 id 값은 생성 당시의 index 번호이다.
+      // id를 가지고 수정할 컴포넌트가 배열의 몇 번째 index인지 찾아서 수정한다.
+      const index = state.findIndex(todo => todo.get("id") === id);
       return state.updateIn([index, "done"], done => !done);
     },
     [REMOVE]: (state, action) => {
-      const { payload: index } = action;
+      const { payload: id } = action;
+      // TodoItem이 가지고 있는 id 값은 생성 당시의 index 번호이다.
+      // id를 가지고 삭제할 컴포넌트가 배열의 몇 번째 index인지 찾아서 삭제한다.
+      const index = state.findIndex(todo => todo.get("id") === id);
       return state.delete(index);
     }
   },
