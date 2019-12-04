@@ -25,3 +25,6 @@ const mapToDispatch = dispatch => ({
 });
 
 export default connect(null, mapToDispatch)(App);
+/* AppContainer를 따로 만들어 export default connect(null, mapToDispatch)(App) 하지 않고
+   App에서 컴포넌트를 정의하고 바로 연결할 수 있다.
+*/
