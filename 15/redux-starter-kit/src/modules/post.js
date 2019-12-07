@@ -5,6 +5,7 @@ function getPostAPI(postId) {
   return axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
 }
 
+const GET_POST = "GET_POST";
 const GET_POST_PENDING = "GET_POST_PENDING";
 const GET_POST_SUCCESS = "GET_POST_SUCCESS";
 const GET_POST_FAILURE = "GET_POST_FAILURE";
@@ -13,7 +14,7 @@ const getPostPending = createAction(GET_POST_PENDING);
 const getPostSuccess = createAction(GET_POST_SUCCESS);
 const getPostFailure = createAction(GET_POST_FAILURE);
 
-export const getPost = postId => dispatch => {
+/* export const getPost = postId => dispatch => {
   // 먼저 요청이 시작했다는 것을 알립니다.
   dispatch(getPostPending());
 
@@ -37,7 +38,13 @@ export const getPost = postId => dispatch => {
       // 다시 한 번 catch할 수 있게 합니다.
       throw error;
     });
-};
+}; */
+
+// redux-promise-middleware
+export const getPost = postId => ({
+  type: GET_POST,
+  payload: getPostAPI(postId)
+});
 
 // 리듀서 함수 구현
 const initialState = {
