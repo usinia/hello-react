@@ -45,7 +45,7 @@
 
 [16장 react-router로 SPA 개발](docs/16.md)
 
-[17장 코드 스플리팅](docs/01.md)
+[17장 코드 스플리팅](docs/17.md)
 
 [18장 ](docs/01.md)
 
