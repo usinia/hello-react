@@ -1,29 +1,35 @@
-// const hello = "hello";
-// 문제(오류): 'hello' is assigned a value but never used./
-
-// koa 서버 여는 법
 const Koa = require("koa");
+const Router = require("koa-router");
+const bodyParser = require("koa-bodyparser");
+
+const api = require("./api");
 
 const app = new Koa();
+const router = new Router();
 
-// app.use(() => console.log(1));
-// // next()를 호출하지 않았기 때문에 이후 미들웨어는 무시된다. (처리되지 않는다.)
-// app.use(() => console.log(2));
-
-app.use((ctx, next) => {
-  console.log(1);
-  next().then(() => console.log("bye"));
+// 라우터 설정
+/* router.get("/", ctx => {
+  ctx.body = "홈";
 });
 
-app.use(async (ctx, next) => {
-  console.log(2);
-  await next();
-  console.log("bye2");
+router.get("/about/:name?", ctx => {
+  console.log("ctx.params", ctx.params);
+  const { name } = ctx.params;
+  ctx.body = name ? `${name}의 소개` : "소개";
 });
 
-app.use(ctx => {
-  ctx.body = "hello world";
-});
+router.get("/posts", ctx => {
+  console.log("ctx.query", ctx.query, "querystring", ctx.querystring);
+  const { id } = ctx.query;
+  ctx.body = id ? `포스트 #${id}` : "포스트 아이디가 없습니다.";
+}); */
+router.use("/api", api.routes()); // api 라우트 적용
+
+// 라우터 적용 전에 bodyParser 적용
+app.use(bodyParser());
+
+// app 인스턴스에 라우터 적용
+app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(4000, () => {
   console.log("listening to port 4000");
