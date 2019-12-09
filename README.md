@@ -51,7 +51,7 @@
 
 [19장 mongoose를 이용한 MongoDB 연동 실습](docs/19.md)
 
-[20장 블로그 프로젝트](docs/01.md)
+[20장 블로그 프로젝트](docs/20.md)
 
 [21장 ](docs/01.md)
 
