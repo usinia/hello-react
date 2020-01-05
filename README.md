@@ -2,16 +2,15 @@
 
 리액트를 다루는 기술(김민준) 실습 코드
 
-<br/>
+## 개정판 (renew)
+
+차이점 : 함수형 컴포넌트의 Hooks, immer 불변성, react-virtualized 성능 최적화, context API, react-redux에서 connect 대신 useSelector/useDispatch Hooks 사용, redux-pender 대신 redux-saga, 코드 스플리팅 등
 
 ---
 
-<br/>
+## 리액트를 다루는 기술 (실무에서 알아야 할 기술은 따로 있다!) \_ 김민준
 
-# 리액트를 다루는 기술 (실무에서 알아야 할 기술은 따로 있다!) _ 김민준
-
-목차
-
+### 목차
 
 [1장 리액트 시작](docs/01.md)
 
@@ -52,9 +51,3 @@
 [19장 mongoose를 이용한 MongoDB 연동 실습](docs/19.md)
 
 [20장 블로그 프로젝트](docs/20.md)
-
-[21장 ](docs/01.md)
-
-[22장 ](docs/01.md)
-
-[23장 ](docs/01.md)
