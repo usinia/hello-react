@@ -1,6 +1,6 @@
 # blog-frontend
 
-### install
+## install
 
 ```shell
 yarn add react-router-dom
