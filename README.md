@@ -57,6 +57,24 @@
 
 - useRef : 함수형 컴포넌트에서 ref를 쉽게 이용할 수 있도록 해준다. `const inputEl = useRef(null);`로 정의하며 객체 안의 current 값이 실제 엘리먼트를 가리킨다. `inputEl.current.focus();` 또한, 렌더링과 상관없이 변경되는 로컬 변수를 정의할 때도 사용된다. `const id = useRef(1);`
 
+### 10. 일정 관리 웹 어ㅐ플리케이션 만들기
+
+flex 연습 사이트 [FlexBox Froggy](https://flexboxfroggy.com/#ko)
+
+### 11. 컴포넌트 성능 최적화
+
+#### 11.4 React.memo를 사용하여 컴포넌트 성능 최적화
+
+컴포넌트의 리렌더링을 방지하는 메서드로 클래스형 컴포넌트의 라이프사이클 메서드 shouldComponentUpdate가 있다면 함수형 컴포넌트에는 React.memo가 있다. `export default React.memo(App);`로 컴포넌트를 감싸서 내보낸다. 함수형 컴포넌트의 파라미터가 변경될 경우에만 리렌더링 한다.
+
+#### 11.5 onToggle, onRemove 함수가 바뀌지 않게 하기
+
+todos 배열을 참조하고 있는 함수들은 todos 배열이 불변성을 유지하며 변경되면 새로운 함수가 만들어진다. 이를 방지하기 위해 useState나 useReducer를 사용할 수 있다.
+
+useState의 함수형 업데이트 : setTodos를 사용할 때 새로운 상태를 파라미터로 넣는 대신, 상태 업데이트를 어떻게 할지 정의해 주는 업데이트 함수를 넣을 수도 있는데 이를 함수형 업데이트라고 부른다. `setNumber(number+1)` 하는 것이 아니라 `const onIncrease = useCallback(()=>setNumber(prev=>prev+1), []);` 처럼 어떻게 업데이트할지 정의해 주는 업데이트 함수다. 배열에 number을 넣지 않아도 된다.
+
+useReducer 사용하기 : 상태를 업데이트 하는 로직을 모아서 컴포넌트 바깥에 둘 수 있으며 성능상 비슷하기 때문에 어떤 방법을 선택할지는 취향에 따라 결정하면 된다.
+
 ---
 
 ## 리액트를 다루는 기술 (실무에서 알아야 할 기술은 따로 있다!) \_ 김민준
