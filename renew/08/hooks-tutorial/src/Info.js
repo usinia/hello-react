@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
+import useInputs from "./useInput";
 
-function reducer(state, action) {
+/* function reducer(state, action) {
   return {
     ...state,
     [action.name]: action.value
@@ -14,8 +15,17 @@ const Info = () => {
   });
   const { name, nickname } = state;
   const onChange = e => {
-    dispatch(e.target); /* e.target 자체를 액션으로 사용 */
+    dispatch(e.target); // e.target 자체를 액션으로 사용
   };
+   */
+
+const Info = () => {
+  // 8.7 커스텀 hooks 만들기
+  const [state, onChange] = useInputs({
+    name: "",
+    nickname: ""
+  });
+  const { name, nickname } = state;
 
   return (
     <div>

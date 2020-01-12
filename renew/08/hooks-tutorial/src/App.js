@@ -1,12 +1,14 @@
 import React from "react";
-import Counter from "./Counter";
-import Info from "./Info";
+// import Counter from "./Counter";
+// import Info from "./Info";
+import Average from "./Average";
 
 function App() {
   return (
     <div>
-      <Counter />
-      <Info />
+      {/* <Counter />
+      <Info /> */}
+      <Average />
     </div>
   );
 }

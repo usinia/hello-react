@@ -6,6 +6,57 @@
 
 차이점 : 함수형 컴포넌트의 Hooks, immer 불변성, react-virtualized 성능 최적화, context API, react-redux에서 connect 대신 useSelector/useDispatch Hooks 사용, redux-pender 대신 redux-saga, 코드 스플리팅 등
 
+### 8. Hooks
+
+- useState : 함수형 컴포넌트에서 상태를 관리할 수 있다. `const [value, setValue] = useState(0 /* 초기값 */);` 으로 사용
+
+- useEffect : 리액트 컴포넌트가 렌더링될 때마다 특정 작업을 수행하도록 설정한다. componentDidMount와 ComponentDidUpdate를 합친 형태로 보아도 무방하다.
+
+  ```js
+  /* 기본 */
+  useEffect(() => {
+  console.log("렌더링 완료");
+  console.log({
+      name,
+      nickname
+  });
+  });
+
+  /* 마운트될 때만 실행 */
+  useEffect(() => {
+  console.log("마운트될 때만 실행");
+  }, []);
+
+  /* 특정 값이 업데이트될 때만 실행 */
+  useEffect(() => {
+  console.log(name);
+  }, [name]);
+  // 아래와 동일
+  componentDidUpdate(prevProps, prevState) {
+  if (prevProps.value !== this.props.value) {
+      doSomething();
+  }
+  }
+
+  /* cleanup 함수 - 컴포넌트가 언마운트 되기 전이나 업데이트 되기 직전에 특정 작업 수행도록 설정시 */
+  useEffect(() => {
+  console.log("effect");
+  console.log(name);
+  return () => {
+      console.log("clean up");
+      console.log(name);
+  };
+  });
+  ```
+
+- useReducer : useState보다 더 다양한 컴포넌트 상황에 따라 다양한 상태를 업데이트할 때 사용하는 Hook이다.
+
+- useMemo : 함수형 컴포넌트 내부에서 발생하는 연산을 최적화할 수 있다. 숫자, 문자열, 객체처럼 일반 값을 재사용할 때 사용하며 함수 재사용시 더 간편한 useCallback이 존재한다. `const avg = useMemo(()=>getAverage(list), [list]);`로 사용하며, 배열 내의 값이 변경되었을 때만 연산을 실행하고, 그렇지 않으면 기존의 값을 재사용한다.
+
+- useCallback : useMemo와 비슷한 함수로 주로 렌더링 성능을 최적화해야 하는 상황에서 사용한다. 이 Hook을 사용하여 이벤트 핸들러 함수를 필요할 때만 생성할 수 있다. useMemo와 마찬가지로 `const onChange = useCallback(e=>{setNumber(e.target.value);}, []);`로 사용하며, 빈 배열일 경우 컴포넌트 처음 렌더링시, 아닐 경우 배열 내의 값이 변경되었을 때만 함수를 생성한다.
+
+- useRef : 함수형 컴포넌트에서 ref를 쉽게 이용할 수 있도록 해준다. `const inputEl = useRef(null);`로 정의하며 객체 안의 current 값이 실제 엘리먼트를 가리킨다. `inputEl.current.focus();` 또한, 렌더링과 상관없이 변경되는 로컬 변수를 정의할 때도 사용된다. `const id = useRef(1);`
+
 ---
 
 ## 리액트를 다루는 기술 (실무에서 알아야 할 기술은 따로 있다!) \_ 김민준
