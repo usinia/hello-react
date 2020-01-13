@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^3.0.6",
-    "dotenv": "^7.0.0",
+    "dotenv": "^8.2.0",
     "eslint-config-prettier": "^4.1.0",
     "esm": "^3.2.22",
     "joi": "^14.3.1",
@@ -13,7 +13,7 @@
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "mongoose": "^5.5.2"
+    "mongoose": "^5.8.7"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

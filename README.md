@@ -189,6 +189,18 @@ state에 저장하여 사용하거나 `const a = await import('./b'); this.setSt
 
 서버 사이드 렌더링을 제공하는 Loadable Components 라이브러리도 있다. 이 라이브러리를 사용하면 컴포넌트를 미리 불러올 수 있다. `const onMouseOver=()=>{a.preload();}`;
 
+### 20. 서버 사이드 렌더링
+
+UI를 서버에서 렌더링하는 것을 의미한다. 초기 렌더링을 서버가 대신 해주어 사용자가 html을 전달받을 때 내부에 렌더링된 결과물이 보인다. 초기 접속시 데이터가 로딩되지 않은 상황에서도 사용자가 볼 수 있는 html이 존재하기 때문에 사용자 경험이 올라간다. string 형태의 html을 return 하는 형식이다.
+
+서버는 문자열 형태로 렌더링하므로 state나 리덕스 스토어의 상태 변경에 따라 자동으로 리렌더링 되지 않아서 renderToString 메서드를 호출해야 한다. 또한 라이프사이클 메서드도 사용할 수 없다.
+
+서버 사이드 렌더링 시 데이터 로딩을 해결하는 방븝어로 redux-thunk 혹은 redux-saga 미들웨어를 사용하여 API를 호출하는 방식이 있다.
+
+### 22. mongoose를 이용한 MongoDB 연동 실습
+
+MongoDB를 GUI로 편하게 조회할 수 있는 [MongoDB Compass](https://www.mongodb.com/products/compass)
+
 ---
 
 ## 리액트를 다루는 기술 (실무에서 알아야 할 기술은 따로 있다!) \_ 김민준
