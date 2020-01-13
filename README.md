@@ -201,6 +201,34 @@ UI를 서버에서 렌더링하는 것을 의미한다. 초기 렌더링을 서�
 
 MongoDB를 GUI로 편하게 조회할 수 있는 [MongoDB Compass](https://www.mongodb.com/products/compass)
 
+### 23. JWT를 통한 회원 인증 시스템 구현하기
+
+대표적인 인증 방식으로 세션 기반과 토큰 기반 인증이 있다. 세션은 서버가 사용자의 로그인 여부를 기억하고 있는 것으로, 서버가 여러 개일 경우 세션을 공유해야 하므로 전용 데이터베이스 등 고려하 사항이 많다. 토큰 기반은 서버가 만들어주는 문자열을 이용한 것으로 사용자의 로그인 정보와 서버에서 발급되었음을 증명하는 서명이 들어 있다. 서명 데이터는 해싱 알고리즘을 통해 만들어지는데, 주로 HMAC SHA256 혹은 RSA SHA256 알고리즘이 사용된다.
+
+해시 관련 `$ yarn add bcrypt`
+
+토큰 발급 및 검증 `$ yarn add jsonwebtoken`
+
+비밀키 설정 `$ openssl rand -hex 64`
+
+Postman 요청
+
+```js
+// POST http://localhost:4000/api/auth/register
+{
+  username: "velopert",
+  password: "mypass123"
+};
+// Body - x-www-form-urlencoded - key & value
+
+// return
+{
+  "_id": "5e1c8c7ef26e746e678aa165",
+  "username": "velopert",
+  "__v": 0
+}
+```
+
 ---
 
 ## 리액트를 다루는 기술 (실무에서 알아야 할 기술은 따로 있다!) \_ 김민준
