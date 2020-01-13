@@ -175,6 +175,20 @@ Context API는 리액트 프로젝트에서 전역적으로 사용할 데이터�
 
 함수형 컴포넌트에서는 `useContext` Hook, 클래스형에서는 `static contextType`을 사용하여 context에 접근할 수 있다.
 
+### 17. 리덕스를 사용하여 리액트 애플리케이션 상태 관리하기
+
+리덕스 스토어와 연동된 컨테이너 컴포넌트를 만들 때 connect 함수 대신 react-redux의 Hooks인 `useSelector`와 `useDispatch`를 사용할 수 있다. 차이점은 connect는 데이터 변경시만 리렌더링 되지만 Hooks는 그렇지 않으므로 `React.memo()`로 감싸줘야 한다는 점이다.
+
+### 19. 코드 스플리팅
+
+사용자에게 제공하기 위해 리액트 프로젝트를 빌드할 때 불필요한 주석이나 트랜스파일 작업 등을 웹팩이 담당한다. 이 과정에서 자바스크립트 파일과 CSS 파일이 각 하나의 파일로 합쳐지는데, 웹팩 설정의 SplitChunks라는 기능이 적용되어 일정 크기 이상의 파일, 여러 파일 간에 공유된 파일 등을 자동으로 분리시켜 캐싱의 효과를 누릴 수 있다. 자주 바뀌지 않는 파일들의 캐싱 효과를 누릴 수 있는데, 이처럼 파일을 분리하는 작업을 코드 스플리팅이라고 한다.
+
+`import`가 아닌 `import()`를 사용하면 실제 함수가 필요한 시점에서 파일을 불러온다.
+
+state에 저장하여 사용하거나 `const a = await import('./b'); this.setState({s: a});`, React.lazy와 Suspense를 사용하여 코드 스플리팅할 수 있다. `const a = React.lazy(()=>import('./b'));` `<Suspense fallback={<div>loading</div>}><a /></Suspense>`
+
+서버 사이드 렌더링을 제공하는 Loadable Components 라이브러리도 있다. 이 라이브러리를 사용하면 컴포넌트를 미리 불러올 수 있다. `const onMouseOver=()=>{a.preload();}`;
+
 ---
 
 ## 리액트를 다루는 기술 (실무에서 알아야 할 기술은 따로 있다!) \_ 김민준
