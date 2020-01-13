@@ -167,6 +167,14 @@ const onChange = useCallback(e => {
 
 [South Korea news API](https://newsapi.org/s/south-korea-news-api)
 
+### 15. Context API
+
+Context API는 리액트 프로젝트에서 전역적으로 사용할 데이터가 있을 때 유용한 기능이다. 컴포넌트 깊이가 깊거나 다루는 데이터 크기가 클 경우 사용한다.
+
+기본적으로 `createContext, Consumer, Provider`을 사용하여 접근 및 값을 변경할 수 있다.
+
+함수형 컴포넌트에서는 `useContext` Hook, 클래스형에서는 `static contextType`을 사용하여 context에 접근할 수 있다.
+
 ---
 
 ## 리액트를 다루는 기술 (실무에서 알아야 할 기술은 따로 있다!) \_ 김민준
