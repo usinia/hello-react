@@ -6,6 +6,37 @@
 
 차이점 : 함수형 컴포넌트의 Hooks, immer 불변성, react-virtualized 성능 최적화, context API, react-redux에서 connect 대신 useSelector/useDispatch Hooks 사용, redux-pender 대신 redux-saga, 코드 스플리팅 등
 
+### 목차
+
+1. 리액트 시작
+2. JSX
+3. 컴포넌트
+4. 이벤트 핸들링
+5. ref: DOM에 이름 달기
+6. 컴포넌트 반복
+7. 컴포넌트의 라이프사이클 메서드
+8. Hooks
+9. 컴포넌트 스타일링
+10. 일정 관리 웹 애플리케이션 만들기
+11. 컴포넌트 성능 최적화
+12. immer를 사용하여 더 쉽게 불변성 유지하기
+13. 리액트 라우터로 SPA 개발하기
+14. 외부 API를 연동하여 뉴스 뷰어 만들기
+15. Context API
+16. 리덕스 라이브러리 이해하기
+17. 리덕스를 사용하여 리액트 애플리케이션 상태 관리하기
+18. 리덕스 미들웨어를 통한 비동기 작업 관리
+19. 코드 스플리팅
+20. 서버 사이드 렌더링
+21. 백엔드 프로그래밍: Node.js의 Koa 프레임워크
+22. mongoose를 이용한 MongoDB 연동 실습
+23. JWT를 통한 회원 인증 시스템 구현하기
+24. 프런트엔드 프로젝트: 시작 및 회원 인증 구현
+25. 프런트엔드 프로젝트: 글쓰기 기능 구현하기
+26. 프런트엔드 프로젝트: 포스트 조회 기능 구현하기
+27. 프런트엔드 프로젝트: 수정/삭제 기능 구현 및 마무리
+28. 그 다음은?
+
 ### 8. Hooks
 
 - useState : 함수형 컴포넌트에서 상태를 관리할 수 있다. `const [value, setValue] = useState(0 /* 초기값 */);` 으로 사용
@@ -129,6 +160,12 @@ const onChange = useCallback(e => {
   );
 }, []);
 ```
+
+### 14. 외부 API를 연동하여 뉴스 뷰어 만들기
+
+[newsapi API 키 발급](https://newsapi.org/register)
+
+[South Korea news API](https://newsapi.org/s/south-korea-news-api)
 
 ---
 
