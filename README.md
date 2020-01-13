@@ -75,6 +75,61 @@ useState의 함수형 업데이트 : setTodos를 사용할 때 새로운 상태�
 
 useReducer 사용하기 : 상태를 업데이트 하는 로직을 모아서 컴포넌트 바깥에 둘 수 있으며 성능상 비슷하기 때문에 어떤 방법을 선택할지는 취향에 따라 결정하면 된다.
 
+### 12. immer를 사용하여 더 쉽게 불변성 유지하기
+
+배열이나 객체의 깊이가 깊어질수록 불변성을 유지하기 힘들다. 이를 간편하게 하기 위해 immer 라이브러리를 설치하여 사용한다.
+
+```js
+import produce from "immer";
+const nextState = produce(originalState, draft => {
+  // originalState - 수정하고 싶은 상태(배열/객체)
+  // draft - 상태를 어떻게 업데이트할지 정의하는 함수, 함수 내부에서 값을 변경하면 produce 함수가 불변성 유지를 대신해 주면서 새로운 상태를 생성
+
+  // 바꾸고 싶은 값 변경
+  draft.somewhere.deep.inside = 5;
+
+  // 불변성에 신경 쓰지 않는 것처럼 코드를 작성하되 불변성 관리는 제대로 하는 것이 핵심
+});
+```
+
+컴포넌트와 useState의 함수형 업데이트 에서도 활용할 수 있다.
+
+```js
+// App.js
+const onChange = useCallback(e => {
+  const { name, value } = e.target;
+  setForm(
+    produce(form, draft => {
+      draft[name] = value;
+    });
+  );
+}, [form]);
+```
+
+```js
+const update = draft => {
+  draft.value = 2;
+}; // immer의 produce 함수 호출시 첫 번째 파라미터가 함수 형태이면 업데이트 함수를 반환한다.
+const originalState = {
+  value: 1,
+  foo: "bar"
+};
+const nextState = update(originalState);
+console.log(nextState); // { value: 2, foo: 'bar' }
+```
+
+```js
+// useState
+const onChange = useCallback(e => {
+  const { name, value } = e.target;
+  setForm(
+    produce(draft => {
+      draft[name] = value;
+    })
+  );
+}, []);
+```
+
 ---
 
 ## 리액트를 다루는 기술 (실무에서 알아야 할 기술은 따로 있다!) \_ 김민준
